@@ -12,6 +12,10 @@ public class InputHandler : MonoBehaviour
     public List<ICommand> _commands = new List<ICommand>();
     private int currentCommandNum = 0;
 
+    void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log(this.name + " have " );
+    }
     private void Start()
     {
         _moveReceiver = new MoveReceiver();
@@ -62,7 +66,7 @@ public class InputHandler : MonoBehaviour
     public void MoveLeft() {Move(MoveDirection.left);}
     public void MoveRight() {Move(MoveDirection.right);}
 
-    private void OnGUI()
+    /*private void OnGUI()
     {
         string label = "  start";
         if (currentCommandNum ==0)
@@ -81,32 +85,32 @@ public class InputHandler : MonoBehaviour
         }
         
         GUI.Label(new Rect(0,0,400,800), label);
-    }
+    }*/
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             MoveUp();
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             MoveDown();
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             MoveLeft();
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             MoveRight();
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKey(KeyCode.R))
         {
             Redo();
         }
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKey(KeyCode.U))
         {
             Undo();
         }
