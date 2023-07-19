@@ -45,11 +45,6 @@ public class MoveCommand : ICommand
         }
     }
 
-    public override string ToString()
-    {
-        return "MoveCommand: " + MoveDirectionString(_direction) + " : " + _distance.ToString();
-    }
-
     public string MoveDirectionString(MoveDirection direction)
     {
         switch (direction)

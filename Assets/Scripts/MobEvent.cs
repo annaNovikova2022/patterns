@@ -5,20 +5,22 @@ using UnityEngine;
 
 public class MobEvent : MonoBehaviour
 {
+    public MobModel MobModel = new MobModel();
     public int _mobNum;
-    private List<MobFactory> _mobFactory = new List<MobFactory>();
+    public GameObject _mobParent;
+    private List<MobController> _mobList = new List<MobController>();
     void Start()
     {
+        var factory = new MobFactory(this.MobModel);
+        
         for (int i = 0; i < _mobNum; i++)
         {
-            _mobFactory.Add(new MobFactory());
-            _mobFactory[i].Create();
+            _mobList.Add(factory.Create(_mobParent));
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

@@ -4,26 +4,26 @@ namespace DefaultNamespace
 {
     public class MobFactory
     {
-        private ModelMob _loadMobs;
-        private ViewMob _viewMob;
-        private ModelMob _initMobs;
-        
-        public MobFactory(/*ModelMob modelMob*/)
+        private MobModel _mobModel;
+        private MobView _mobView;
+
+        public MobFactory(MobModel modelMob)
         {
-            _loadMobs = Resources.Load<ModelMob>("Mob");
-            
+            _mobModel = modelMob;
+            _mobView = Resources.Load<MobView>("Mob");
         }
 
-        public ControllerMob Create()
+        public MobController Create(GameObject mobParent)
         {
-            int randPoint = Random.Range(-50, 50);
-            int randEnemy = Random.Range(-50, 50);
-            Vector3 ransV = new Vector3(randPoint,1 , randEnemy);
-            _initMobs = MonoBehaviour.Instantiate(_loadMobs, ransV, Quaternion.identity);
-            _viewMob = new ViewMob();
-            _viewMob.Mob = _initMobs.gameObject;
+            int randX = Random.Range(-50, 50);
+            int randZ = Random.Range(-50, 50);
+            Vector3 randXZ = new Vector3(randX,1 , randZ);
+            var mobGameObject = MonoBehaviour.Instantiate(_mobView, randXZ, Quaternion.identity);
+            mobGameObject.transform.SetParent(mobParent.transform, false);
             
-            var mob = new ControllerMob(_initMobs,_viewMob);
+            _mobView._currentCoins = Random.Range(0, _mobModel._maxCoins);
+
+            var mob = new MobController(_mobView);
             return mob;
         }
     }
