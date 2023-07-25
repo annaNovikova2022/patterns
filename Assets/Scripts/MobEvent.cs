@@ -11,6 +11,9 @@ public class MobEvent : MonoBehaviour
     private List<MobController> _mobList = new List<MobController>();
     void Start()
     {
+        _mobNum = GameEventSetting.numberOfMobs;
+        _mobParent = GameEventSetting.mobParent;
+        
         var factory = new MobFactory(this.MobModel);
         
         for (int i = 0; i < _mobNum; i++)
@@ -18,9 +21,5 @@ public class MobEvent : MonoBehaviour
             _mobList.Add(factory.Create(_mobParent));
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    
 }

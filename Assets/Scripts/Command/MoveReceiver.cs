@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MoveReceiver : MonoBehaviour
+public class MoveReceiver //Можем настраивать как угодно
 {
     public void MoveOperation(GameObject gameObjectToMove, MoveDirection direction, float distance)
     {

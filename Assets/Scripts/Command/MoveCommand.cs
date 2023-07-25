@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum MoveDirection{ up, down, left, right};
+public enum MoveDirection{ up, down, left, right, stop};
 
 public class MoveCommand : ICommand
 {
@@ -44,22 +44,6 @@ public class MoveCommand : ICommand
             
         }
     }
-
-    public string MoveDirectionString(MoveDirection direction)
-    {
-        switch (direction)
-        {
-            case MoveDirection.up:
-                return "up";
-            case MoveDirection.down:
-                return "down";
-            case MoveDirection.left:
-                return "left";
-            case MoveDirection.right:
-                return "right";
-            default:
-                return "unkown";
-        }
-    }
+    
 
 }
